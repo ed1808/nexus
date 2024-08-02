@@ -1,0 +1,35 @@
+<div class="min-w-60 w-full flex flex-col gap-2">
+  <div class="pl-2 pb-2 flex items-center justify-between">
+    <div class="font-bold">
+      {{ currentDate() | date: 'MMMM' }} {{ currentDate() | date: 'yyyy' }}
+    </div>
+    <div class="flex gap-1">
+      <button
+        class="w-6 text-center cursor-pointer hover:bg-gray-300 dark:hover:bg-shark-800 rounded-full transition-colors ease-linear"
+        (click)="prevMonth()">
+        &#10096;
+      </button>
+      <button
+        class="w-6 text-center cursor-pointer hover:bg-gray-300 dark:hover:bg-shark-800 rounded-full transition-colors ease-linear"
+        (click)="nextMonth()">
+        &#10097;
+      </button>
+    </div>
+  </div>
+  <div class="grid grid-cols-7 gap-2">
+    @for (day of weekDays; track $index) {
+    <p class="text-center font-bold pointer-events-none">{{ day }}</p>
+    }
+    @for (day of daysInMonth; track $index) {
+    <div class="font-light">
+      <p class="text-center rounded pointer-events-none" [ngClass]="{ 
+            'text-gray-500': !day.currentMonth, 
+            'bg-violet-400': day.events.length,
+            'bg-blue-600 text-white dark:bg-green-500 font-bold': day.today, 
+            }">
+        {{ day.date | date: 'd' }}
+      </p>
+    </div>
+    }
+  </div>
+</div>

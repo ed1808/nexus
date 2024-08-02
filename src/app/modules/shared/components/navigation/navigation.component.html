@@ -1,0 +1,141 @@
+<aside class="sm:h-full bg-white dark:bg-shark-950 sm:shadow-2xl ">
+  <nav
+    class="sm:h-full sm:flex sm:flex-col sm:justify-between sm:items-center">
+    <ul class="flex sm:flex-col items-center justify-evenly">
+      <li
+        routerLink="/"
+        routerLinkActive="text-sky-500 dark:text-green-400"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="group relative sm:w-full flex items-center justify-center py-7 px-3 border-t-2 border-transparent sm:border-t-0 hover:text-sky-500 hover:border-t-sky-500 dark:hover:text-green-400 dark:hover:border-t-green-400 cursor-pointer transition-colors ease-linear">
+        <a
+          class="relative flex items-center gap-2 sm:inline-block sm:w-6 sm:h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24" color="currentColor" fill="none"
+            class="absolute left-1/2 -translate-x-1/2 group-hover:-translate-y-3/4 sm:group-hover:translate-y-0 transition-transform">
+            <path
+              d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V8C10 9.88562 10 10.8284 9.41421 11.4142C8.82843 12 7.88562 12 6 12C4.11438 12 3.17157 12 2.58579 11.4142C2 10.8284 2 9.88562 2 8V6Z"
+              stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M2 19C2 18.0681 2 17.6022 2.15224 17.2346C2.35523 16.7446 2.74458 16.3552 3.23463 16.1522C3.60218 16 4.06812 16 5 16H7C7.93188 16 8.39782 16 8.76537 16.1522C9.25542 16.3552 9.64477 16.7446 9.84776 17.2346C10 17.6022 10 18.0681 10 19C10 19.9319 10 20.3978 9.84776 20.7654C9.64477 21.2554 9.25542 21.6448 8.76537 21.8478C8.39782 22 7.93188 22 7 22H5C4.06812 22 3.60218 22 3.23463 21.8478C2.74458 21.6448 2.35523 21.2554 2.15224 20.7654C2 20.3978 2 19.9319 2 19Z"
+              stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M14 16C14 14.1144 14 13.1716 14.5858 12.5858C15.1716 12 16.1144 12 18 12C19.8856 12 20.8284 12 21.4142 12.5858C22 13.1716 22 14.1144 22 16V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V16Z"
+              stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M14 5C14 4.06812 14 3.60218 14.1522 3.23463C14.3552 2.74458 14.7446 2.35523 15.2346 2.15224C15.6022 2 16.0681 2 17 2H19C19.9319 2 20.3978 2 20.7654 2.15224C21.2554 2.35523 21.6448 2.74458 21.8478 3.23463C22 3.60218 22 4.06812 22 5C22 5.93188 22 6.39782 21.8478 6.76537C21.6448 7.25542 21.2554 7.64477 20.7654 7.84776C20.3978 8 19.9319 8 19 8H17C16.0681 8 15.6022 8 15.2346 7.84776C14.7446 7.64477 14.3552 7.25542 14.1522 6.76537C14 6.39782 14 5.93188 14 5Z"
+              stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          <span
+            class="invisible rounded sm:absolute group-hover:visible group-hover:translate-y-2/3 sm:group-hover:translate-y-0 sm:group-hover:translate-x-1/2 sm:group-hover:bg-white dark:sm:group-hover:bg-shark-950 sm:group-hover:px-3 sm:group-hover:shadow transition-all ease-linear">Dashboard</span>
+        </a>
+      </li>
+      <li
+        routerLink="/tasks"
+        routerLinkActive="text-sky-500 dark:text-green-400"
+        class="group relative sm:w-full flex items-center justify-center py-7 px-3 border-t-2 border-transparent sm:border-t-0 hover:text-sky-500 hover:border-t-sky-500 dark:hover:text-green-400 dark:hover:border-t-green-400 cursor-pointer transition-colors ease-linear">
+        <a
+          class="relative flex items-center gap-2 sm:inline-block sm:w-6 sm:h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24" color="currentColor" fill="none"
+            class="absolute left-1/2 -translate-x-1/2 group-hover:-translate-y-3/4 sm:group-hover:translate-y-0 transition-transform">
+            <path
+              d="M7.5 3.5C5.9442 3.54667 5.01661 3.71984 4.37477 4.36227C3.49609 5.24177 3.49609 6.6573 3.49609 9.48836L3.49609 15.9944C3.49609 18.8255 3.49609 20.241 4.37477 21.1205C5.25345 22 6.66767 22 9.49609 22L14.4961 22C17.3245 22 18.7387 22 19.6174 21.1205C20.4961 20.241 20.4961 18.8255 20.4961 15.9944V9.48836C20.4961 6.6573 20.4961 5.24177 19.6174 4.36228C18.9756 3.71984 18.048 3.54667 16.4922 3.5"
+              stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M7.49609 3.75C7.49609 2.7835 8.2796 2 9.24609 2H14.7461C15.7126 2 16.4961 2.7835 16.4961 3.75C16.4961 4.7165 15.7126 5.5 14.7461 5.5H9.24609C8.2796 5.5 7.49609 4.7165 7.49609 3.75Z"
+              stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" />
+            <path d="M13.5 11H17" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path d="M7 12C7 12 7.5 12 8 13C8 13 9.58824 10.5 11 10"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M13.5 17H17" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path d="M8 17H9" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span
+            class="invisible rounded sm:absolute group-hover:visible group-hover:translate-y-2/3 sm:group-hover:translate-y-0 sm:group-hover:translate-x-[85%] sm:group-hover:bg-white dark:sm:group-hover:bg-shark-950 sm:group-hover:px-3 sm:group-hover:shadow transition-all ease-linear">Tasks</span>
+        </a>
+      </li>
+      <li
+        routerLink="/notes"
+        routerLinkActive="text-sky-500 dark:text-green-400"
+        class="group relative sm:w-full flex items-center justify-center py-7 px-3 border-t-2 border-transparent sm:border-t-0 hover:text-sky-500 hover:border-t-sky-500 dark:hover:text-green-400 dark:hover:border-t-green-400 cursor-pointer transition-colors ease-linear">
+        <a
+          class="relative flex items-center gap-2 sm:inline-block sm:w-6 sm:h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24" color="currentColor" fill="none"
+            class="absolute left-1/2 -translate-x-1/2 group-hover:-translate-y-3/4 sm:group-hover:translate-y-0 transition-transform">
+            <path
+              d="M16.5956 20.6989L14.1508 21.3462C11.8879 21.9453 10.7564 22.2448 9.86986 21.7542C8.98333 21.2636 8.68795 20.1744 8.09718 17.996L6.63512 12.6048C6.04436 10.4264 5.74898 9.33725 6.26846 8.4744C6.78794 7.61155 7.91941 7.312 10.1824 6.7129L14.1827 5.65384C16.4457 5.05474 17.5771 4.75519 18.4637 5.2458C19.3502 5.73642 19.6456 6.82561 20.2363 9.00398L21.7042 14.4166C21.9554 15.343 22.0811 15.8062 21.943 16.2417M16.5956 20.6989C17.3477 20.4998 17.3537 20.4966 17.9386 19.9948L20.6824 17.6404C21.4308 16.9983 21.805 16.6772 21.943 16.2417M16.5956 20.6989C16.5956 20.6989 17.1837 16.1058 18.5 15.5C19.9932 14.8128 21.943 16.2417 21.943 16.2417"
+              stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" />
+            <path
+              d="M17 5.00118C16.9356 3.92779 16.7573 3.2521 16.2484 2.76762C15.4689 2.02553 14.218 2.02184 11.716 2.01444L7.29321 2.00137C4.79129 1.99398 3.54033 1.99028 2.76535 2.72777C1.99037 3.46526 1.99402 4.65592 2.00132 7.03725L2.01938 12.9307C2.02668 15.3121 2.03033 16.5027 2.80984 17.2448C3.58935 17.9869 4.84031 17.9906 7.34224 17.998L8.02306 18"
+              stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          <span
+            class="invisible rounded sm:absolute group-hover:visible group-hover:translate-y-2/3 sm:group-hover:translate-y-0 sm:group-hover:translate-x-[78%] sm:group-hover:bg-white dark:sm:group-hover:bg-shark-950 sm:group-hover:px-3 sm:group-hover:shadow transition-all ease-linear">Notes</span>
+        </a>
+      </li>
+      <li
+        routerLink="/calendar"
+        routerLinkActive="text-sky-500 dark:text-green-400"
+        class="group relative sm:w-full flex items-center justify-center py-7 px-3 border-t-2 border-transparent sm:border-t-0 hover:text-sky-500 hover:border-t-sky-500 dark:hover:text-green-400 dark:hover:border-t-green-400 cursor-pointer transition-colors ease-linear">
+        <a
+          class="relative flex items-center gap-2 sm:inline-block sm:w-6 sm:h-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24" color="currentColor" fill="none"
+            class="absolute left-1/2 -translate-x-1/2 group-hover:-translate-y-3/4 sm:group-hover:translate-y-0 transition-transform">
+            <path d="M18 2V4M6 2V4" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M11.9955 13H12.0045M11.9955 17H12.0045M15.991 13H16M8 13H8.00897M8 17H8.00897"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M3.5 8H20.5" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M2.5 12.2432C2.5 7.88594 2.5 5.70728 3.75212 4.35364C5.00424 3 7.01949 3 11.05 3H12.95C16.9805 3 18.9958 3 20.2479 4.35364C21.5 5.70728 21.5 7.88594 21.5 12.2432V12.7568C21.5 17.1141 21.5 19.2927 20.2479 20.6464C18.9958 22 16.9805 22 12.95 22H11.05C7.01949 22 5.00424 22 3.75212 20.6464C2.5 19.2927 2.5 17.1141 2.5 12.7568V12.2432Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M3 8H21" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span
+            class="invisible rounded sm:absolute group-hover:visible group-hover:translate-y-2/3 sm:group-hover:translate-y-0 sm:group-hover:translate-x-[59%] sm:group-hover:bg-white dark:sm:group-hover:bg-shark-950 sm:group-hover:px-3 sm:group-hover:shadow transition-all ease-linear">Calendar</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="hidden sm:block">
+      <li class="relative sm:w-full py-7 px-3">
+        <button type="button"
+          class="p-4 relative flex items-center justify-center rounded shadow shadow-shark-800 dark:shadow-black transition-colors ease-linear"
+          [ngClass]="{ 'bg-pampas-50 hover:bg-pampas-200 text-shark-950': !isDarkMode(), 'bg-shark-950 hover:bg-shark-900 text-pampas-50': isDarkMode() }"
+          (click)="toggleTheme()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+            height="20" color="currentColor" fill="none" id="light"
+            class="absolute" [class.hidden]="isDarkMode()">
+            <path
+              d="M17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12Z"
+              stroke="currentColor" stroke-width="1.5" />
+            <path
+              d="M11.9955 3H12.0045M11.9961 21H12.0051M18.3588 5.63599H18.3678M5.63409 18.364H5.64307M5.63409 5.63647H5.64307M18.3582 18.3645H18.3672M20.991 12.0006H21M3 12.0006H3.00898"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+            height="20" color="currentColor" fill="none" id="dark"
+            class="absolute" [class.hidden]="!isDarkMode()">
+            <path
+              d="M21.5 14.0784C20.3003 14.7189 18.9301 15.0821 17.4751 15.0821C12.7491 15.0821 8.91792 11.2509 8.91792 6.52485C8.91792 5.06986 9.28105 3.69968 9.92163 2.5C5.66765 3.49698 2.5 7.31513 2.5 11.8731C2.5 17.1899 6.8101 21.5 12.1269 21.5C16.6849 21.5 20.503 18.3324 21.5 14.0784Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</aside>

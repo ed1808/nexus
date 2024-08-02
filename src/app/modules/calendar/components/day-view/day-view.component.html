@@ -1,0 +1,30 @@
+<div
+  class="p-3 h-full rounded-md bg-gray-200 dark:bg-shark-950 shadow shadow-shark-800 dark:shadow-md dark:shadow-black">
+  <div class="pb-3">
+    <h3 class="font-bold text-lg">Today's schedule</h3>
+    <p class="text-sm text-gray-400">{{ date | date: 'MMMM' }},
+      {{ date | date: 'EEEE' }} {{ date | date: 'dd' }}</p>
+  </div>
+  <div class="relative h-[calc(100%-60px)] overflow-y-scroll" #timeline>
+    @for (hour of hoursArray; track $index) {
+      <div class="relative h-[60px] flex border-b border-dotted border-b-gray-400 dark:border-b-shark-600">
+        <div class="w-[50px] text-sm text-center leading-[60px]" [ngClass]="{ 'font-bold text-blue-600 dark:text-green-500': hour === currentHour, 'text-gray-600 dark:text-gray-400': hour !== currentHour }">
+          {{ hour }}
+        </div>
+        <div class="flex-1 relative">
+          @for (event of events; track event.id) {
+            @if (isEventHour(event, hour)) {
+              <div
+                class="absolute flex flex-col justify-center text-sm pl-1 py-2 w-[calc(100%-4px)] bg-gray-300 dark:bg-gunmetal-900 border-l-4 border-l-blue-500 dark:border-l-green-500 rounded cursor-pointer shadow shadow-shark-800 dark:shadow-black dark:hover:bg-gunmetal-800 transition-colors ease-linear"
+                [style.height]="getEventHeight(event)"
+                [style.top]="getEventTopPosition(event)"
+                (click)="showEventDetail(event)">
+                <span class="font-bold">{{ event.title }}</span>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

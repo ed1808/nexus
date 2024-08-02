@@ -1,0 +1,17 @@
+<div class="h-full py-2 pr-1">
+  <div class="sticky top-0 flex justify-between items-center bg-gray-200 dark:bg-shark-950">
+    <h3 class="font-bold pointer-events-none">Scheduled events</h3>
+    <span class="font-bold text-sm cursor-pointer text-blue-500 dark:text-green-500" [ngClass]="{ 'hidden': eventsList.length < 2}">View all</span>
+  </div>
+  @if (eventsList.length === 0) {
+    <div class="h-[calc(100%-24px)] pt-3 grid place-content-center">
+      <p class="font-light text-gray-600 dark:text-gray-400">You don't have events yet</p>
+    </div>
+  } @else {
+    <div class="h-[calc(100%-24px)] pt-3">
+      <cdk-virtual-scroll-viewport itemSize="84" class="h-full">
+        <app-event [event]="event" *cdkVirtualFor="let event of eventsList" (click)="showEventDetail(event)" (deleteEvent)="deleteEventHandler($event)"></app-event>  
+      </cdk-virtual-scroll-viewport>
+    </div>
+  }
+</div>

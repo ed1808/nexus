@@ -1,0 +1,75 @@
+<div
+  class="relative p-5 max-h-[400px] bg-pampas-100 dark:bg-shark-900 shadow rounded">
+  <button type="button"
+    class="absolute top-3 right-3 px-2 py-1 bg-transparent hover:bg-gray-300 dark:hover:bg-shark-700 transition-colors ease-linear rounded"
+    (click)="close()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20"
+      height="20" color="currentColor" fill="none">
+      <path d="M19 5L5 19M5 5L19 19" stroke="currentColor" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <div>
+    <h2 class="font-bold text-lg">{{ data.title }}</h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300">Created at:
+      {{ data.created_at | date: 'yyyy-MM-dd hh:mm a' }}</p>
+  </div>
+  <div class="pt-3 flex gap-2 justify-between h-80">
+    <div class="space-y-2 max-h-full overflow-y-auto">
+      <h3 class="flex font-bold gap-2 items-center">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+            height="24" color="currentColor" fill="none">
+            <path
+              d="M3.5 10C3.5 6.22876 3.5 4.34315 4.7448 3.17157C5.98959 2 7.99306 2 12 2H12.7727C16.0339 2 17.6645 2 18.7969 2.79784C19.1214 3.02643 19.4094 3.29752 19.6523 3.60289C20.5 4.66867 20.5 6.20336 20.5 9.27273V11.8182C20.5 14.7814 20.5 16.2629 20.0311 17.4462C19.2772 19.3486 17.6829 20.8491 15.6616 21.5586C14.4044 22 12.8302 22 9.68182 22C7.88275 22 6.98322 22 6.26478 21.7478C5.10979 21.3424 4.19875 20.4849 3.76796 19.3979C3.5 18.7217 3.5 17.8751 3.5 16.1818V10Z"
+              stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" />
+            <path
+              d="M20.5 12C20.5 13.8409 19.0076 15.3333 17.1667 15.3333C16.5009 15.3333 15.716 15.2167 15.0686 15.3901C14.4935 15.5442 14.0442 15.9935 13.8901 16.5686C13.7167 17.216 13.8333 18.0009 13.8333 18.6667C13.8333 20.5076 12.3409 22 10.5 22"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M8 7H15" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8 11H11" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span>
+          Description
+        </span>
+      </h3>
+      <div class="pl-7 h-[calc(100%-60px)]">
+        <p #descriptionText (click)="showUpdateDesc()">{{ data.description !== '' ? data.description : 'No description' }}</p>
+        <form (ngSubmit)="handleSubmit()" #updateDescription class="hidden" [formGroup]="updateDescriptionFormGroup">
+          <textarea name="description" id="description" spellcheck="false" class="w-[95%] h-48 rounded-sm border-gray-400 dark:bg-shark-800 resize-none" formControlName="description"></textarea>
+          <div class="flex gap-2">
+            <app-button [btnType]="'submit'" [width]="'full'" [fontWeight]="'semibold'">Update</app-button>
+            <app-button (click)="hideUpdateDesc()" [width]="'full'" [color]="'transparent'" [fontWeight]="'semibold'">Cancel</app-button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="pt-2 space-y-2">
+      <form class="space-y-1" [formGroup]="updateStartDatetimeFormGroup">
+        <div class="flex flex-col">
+          <label for="eventStartDate">Start date:</label>
+          <input (change)="updateData($event)" class="rounded border-gray-400 dark:bg-gunmetal-950" type="date" name="eventStartDate" id="eventStartDate" formControlName="startDate">
+        </div>
+        <div class="flex flex-col">
+          <label for="eventStartHour">Start hour:</label>
+          <input (change)="updateData($event)" class="rounded border-gray-400 dark:bg-gunmetal-950" type="time" name="eventStartHour" id="eventStartHour" formControlName="startHour">
+        </div>
+      </form>
+      <form class="space-y-1" [formGroup]="updateEndDatetimeFormGroup">
+        <div class="flex flex-col">
+          <label for="eventEndDate">End date:</label>
+          <input (change)="updateData($event)" class="rounded border-gray-400 dark:bg-gunmetal-950" type="date" name="eventEndDate" id="eventEndDate" formControlName="endDate">
+        </div>
+        <div class="flex flex-col">
+          <label for="eventEndHour">End hour:</label>
+          <input (change)="updateData($event)" class="rounded border-gray-400 dark:bg-gunmetal-950" type="time" name="eventEndHour" id="eventEndHour" formControlName="endHour">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

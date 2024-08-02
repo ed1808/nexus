@@ -1,0 +1,165 @@
+<div class="p-5 bg-pampas-100 dark:bg-shark-900 shadow rounded">
+  <h2
+    class="pb-2 mb-3 text-2xl border-b border-b-pampas-300 text-center font-bold">
+    {{ data['title'] }}</h2>
+  @switch (data['entityType']) {
+    @case ('note') {
+      @if (data['mode'] === 'create') {
+        <form (ngSubmit)="handleSubmit()" class="mb-3 flex flex-col gap-1"
+          ngNativeValidate>
+          <div class="mb-6 flex flex-col gap-1">
+            <label for="content">Content:</label>
+            <textarea name="content" id="content"
+              class="h-40 px-4 py-2 text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset resize-none"
+              placeholder="I've to do my homeworks" spellcheck="false"
+              [(ngModel)]="data['entity']['content']" required></textarea>
+          </div>
+          <button type="submit"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Add note
+          </button>
+        </form>
+      } @else if (data['mode'] === 'edit') {
+        <form (ngSubmit)="handleSubmit()" class="mb-3 flex flex-col gap-1"
+          ngNativeValidate>
+          <div class="mb-6 flex flex-col gap-1">
+            <label for="content">Content:</label>
+            <textarea name="content" id="content"
+              class="h-40 px-4 py-2 text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset resize-none"
+              placeholder="I've to do my homeworks" spellcheck="false"
+              [(ngModel)]="data['entity']['content']" required></textarea>
+          </div>
+          <button type="submit"
+            class="py-3 block w-full rounded-sm bg-yellow-400 text-shark-950 hover:bg-yellow-500 transition-colors ease-linear">
+            Edit note
+          </button>
+        </form>
+      } @else {
+        <p class="text-center">Do you want to delete this note?</p>
+        <div class="mt-2 flex gap-3">
+          <button (click)="closeModal()" type="button"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Cancel
+          </button>
+          <button (click)="handleDelete()" type="button"
+            class="py-3 block w-full border border-orange-700 rounded-sm bg-transparent hover:bg-orange-800 text-orange-700 hover:text-pampas-50 transition-colors ease-linear">
+            Delete
+          </button>
+        </div>
+      }
+    }
+    @case ('taskList') {
+      @if (data['mode'] === 'create') {
+        <form (ngSubmit)="handleSubmit()" class="mb-3 flex flex-col gap-1"
+          ngNativeValidate>
+          <div class="mb-6 flex flex-col gap-1">
+            <label for="listName">List name:</label>
+            <input type="text"
+              class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+              name="listName" id="listName" placeholder="ToDo list"
+              [(ngModel)]="data['entity']['content']" required>
+          </div>
+          <button type="submit"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Add list
+          </button>
+        </form>
+      } @else {
+        <p class="text-center">Do you want to delete this list?</p>
+        <div class="mt-2 flex gap-3">
+          <button (click)="closeModal()" type="button"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Cancel
+          </button>
+          <button (click)="handleDelete()" type="button"
+            class="py-3 block w-full border border-orange-700 rounded-sm bg-transparent hover:bg-orange-800 text-orange-700 hover:text-pampas-50 transition-colors ease-linear">
+            Delete
+          </button>
+        </div>
+      }
+    }
+    @case ('task') {
+      <p class="text-center">Do you want to delete this task?</p>
+      <div class="mt-2 flex gap-3">
+        <button (click)="closeModal()" type="button"
+          class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+          Cancel
+        </button>
+        <button (click)="handleDelete()" type="button"
+          class="py-3 block w-full border border-orange-700 rounded-sm bg-transparent hover:bg-orange-800 text-orange-700 hover:text-pampas-50 transition-colors ease-linear">
+          Delete
+        </button>
+      </div>
+    }
+    @case ('calendarEvent') {
+      @if (data['mode'] === 'create') {
+        <form (ngSubmit)="handleSubmit()" class="mb-3 flex flex-col gap-2"
+          ngNativeValidate>
+          <div class="flex flex-col gap-1">
+            <label for="eventTitle">Title:</label>
+            <input type="text" name="eventTitle" id="eventTitle"
+              class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+              spellcheck="false" placeholder="Validate my pending tasks"
+              [(ngModel)]="data['entity']['eventTitle']" required>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="eventDescription">Description:</label>
+            <textarea name="eventDescription" id="eventDescription"
+              class="h-20 px-4 py-2 text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset resize-none"
+              spellcheck="false"
+              placeholder="I've to validate all my pending tasks"
+              [(ngModel)]="data['entity']['eventDesc']"></textarea>
+          </div>
+          <div class="flex gap-2">
+            <div class="flex flex-col gap-1 grow">
+              <label for="startDate">Start date:</label>
+              <input type="date" name="startDate" id="startDate"
+                class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+                [(ngModel)]="data['entity']['startDate']"
+                required>
+            </div>
+            <div class="flex flex-col gap-1 grow">
+              <label for="startTime">Start hour:</label>
+              <input type="time" name="startHour" id="startHour"
+                class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+                [(ngModel)]="data['entity']['startHour']"
+                required>
+            </div>
+          </div>
+          <div class="mb-6 flex gap-2">
+            <div class="flex flex-col gap-1 grow">
+              <label for="endDate">End date:</label>
+              <input type="date" name="endDate" id="endDate"
+                class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+                [(ngModel)]="data['entity']['endDate']"
+                required>
+            </div>
+            <div class="flex flex-col gap-1 grow">
+              <label for="startTime">End hour:</label>
+              <input type="time" name="endHour" id="endHour"
+                class="text-current border-gray-300 outline-none ring-1 ring-inset ring-transparent dark:bg-shark-900 rounded-sm shadow-sm focus-within:ring-1 focus-within:ring-blue-500 focus-within:ring-inset"
+                [(ngModel)]="data['entity']['endHour']"
+                required>
+            </div>
+          </div>
+          <button type="submit"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Add event
+          </button>
+        </form>
+      } @else {
+        <p class="text-center">Do you want to delete this event?</p>
+        <div class="mt-2 flex gap-3">
+          <button (click)="closeModal()" type="button"
+            class="py-3 block w-full rounded-sm bg-blue-500 hover:bg-blue-600 dark:bg-green-500 dark:hover:bg-green-600 text-pampas-50 transition-colors ease-linear">
+            Cancel
+          </button>
+          <button (click)="handleDelete()" type="button"
+            class="py-3 block w-full border border-orange-700 rounded-sm bg-transparent hover:bg-orange-800 text-orange-700 hover:text-pampas-50 transition-colors ease-linear">
+            Delete
+          </button>
+        </div>
+      }
+    }
+  }
+</div>
