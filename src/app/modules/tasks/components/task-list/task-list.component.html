@@ -1,6 +1,6 @@
 <div
-  class="p-2 w-72 rounded shrink-0 bg-gray-200 shadow shadow-shark-800 dark:shadow-md dark:shadow-black dark:bg-shark-950">
-  <div class="my-3 flex justify-between">
+  [ngClass]="{ 'h-full': list.tasks!.length! > 0 }" class="overflow-y-auto p-2 w-72 rounded shrink-0 bg-gray-200 shadow shadow-shark-800 dark:shadow-md dark:shadow-black dark:bg-shark-950">
+  <div class="py-3 flex justify-between">
     <h2 (click)="showUpdateListNameForm()" #taskListName class="text-sm font-bold w-3/4">{{ list.title }}</h2>
     <form #editTaskListName (ngSubmit)="handleUpdateTaskListName()" [formGroup]="updateTaskListNameFormGroup" class="hidden">
       <input type="text" class="rounded bg-gray-300 border-2 font-bold text-sm resize-none" name="listName" id="listName" spellcheck="false" formControlName="updateTaskListName">
@@ -21,7 +21,7 @@
       </svg>
     </button>
   </div>
-  <div id="list_{{ list.id }}" cdkDropList class="min-h-5 flex flex-col gap-2 shrink-0" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list.tasks!">
+  <div id="list_{{ list.id }}" cdkDropList class="p-1 min-h-5 max-h-[calc(100%-104px)] overflow-y-auto flex flex-col gap-2 shrink-0" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list.tasks!">
     @for (task of list.tasks; track task.id) {
       <app-task 
       [taskId]="task.id!" 
@@ -37,7 +37,7 @@
       </div>
     }
   </div>
-  <div class="mt-2 p-1 w-full flex flex-col gap-2 text-sm items-center">
+  <div class="pt-2 px-1 pb-1 w-full flex flex-col gap-2 text-sm items-center">
     <form (ngSubmit)="handleCreateNewTask()" [formGroup]="newTaskFormGroup" #newTaskForm class="hidden flex-col gap-2 w-full">
       <input type="text" name="newTaskTitle" id="newTaskTitle" spellcheck="false" class="px-4 py-2 text-current outline-none ring-1 ring-inset ring-transparent dark:bg-shark-800 rounded focus-within:ring-1 focus-within:ring-blue-400 focus-within:ring-inset" formControlName="newTaskTitle">
       <div class="flex gap-2">

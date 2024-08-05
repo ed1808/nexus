@@ -8,6 +8,7 @@ import {
   ElementRef, 
   inject
 } from '@angular/core';
+import { NgClass } from '@angular/common';
 import { TaskList } from '../../../../models/taskList.model';
 import { Task, TaskModalConfig } from '../../../../models/task.model';
 import { TaskComponent } from '../task/task.component';
@@ -40,7 +41,8 @@ import { ModalComponent } from '../../../shared/components/modal/modal.component
     OverlayModule, 
     ReactiveFormsModule,
     DragDropModule,
-    DialogModule
+    DialogModule,
+    NgClass
   ],
   templateUrl: './task-list.component.html'
 })

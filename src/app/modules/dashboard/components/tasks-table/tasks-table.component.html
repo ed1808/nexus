@@ -5,10 +5,8 @@
   </div>
 } @else {
   <table
-    class="h-[calc(100%-32px)] w-full bg-white dark:bg-shark-800 rounded shadow shadow-shark-800 dark:shadow-md dark:shadow-black"
+    class="w-full bg-white dark:bg-shark-800 rounded shadow shadow-shark-800 dark:shadow-md dark:shadow-black overflow-y-auto"
     cdk-table [dataSource]="dataSource">
-    <tr cdk-header-row *cdkHeaderRowDef="cols"></tr>
-    <tr cdk-row *cdkRowDef="let row; columns: cols"></tr>
 
     <ng-container cdkColumnDef="title">
       <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Title</th>
@@ -36,5 +34,8 @@
       <td class="h-14 px-6 text-sm" cdk-cell *cdkCellDef="let row">{{ row.created_at | date: "YYYY-MM-dd" }}
       </td>
     </ng-container>
+
+    <tr cdk-header-row *cdkHeaderRowDef="cols"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: cols;"></tr>
   </table>
 }
