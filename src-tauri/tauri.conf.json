@@ -6,7 +6,7 @@
     "distDir": "../dist/nexus/browser"
   },
   "package": {
-    "productName": "nexus",
+    "productName": "Nexus",
     "version": "0.0.0"
   },
   "tauri": {

@@ -1,11 +1,12 @@
 use std::fs;
 use std::path::{Path, MAIN_SEPARATOR_STR};
+use std::env::consts::OS;
 
 use diesel::prelude::*;
 use diesel::sqlite::SqliteConnection;
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 
-const MIGRATIONS: EmbeddedMigrations = embed_migrations!();
+const MIGRATIONS: EmbeddedMigrations = embed_migrations!("../migrations");
 
 pub fn init() {
     if !db_exists() {
@@ -28,9 +29,9 @@ fn run_migrations() {
 }
 
 fn establish_connection() -> SqliteConnection {
-    let db_path = String::from("sqlite:///") + get_db_path().as_str();
+    let db_path = get_db_path();
 
-    SqliteConnection::establish(&db_path)
+    SqliteConnection::establish(db_path.as_str())
         .unwrap_or_else(|_| panic!("Error connecting to {db_path}"))
 }
 
@@ -52,13 +53,22 @@ fn db_exists() -> bool {
 
 fn get_db_path() -> String {
     let home_dir = dirs::home_dir().unwrap();
-    home_dir.to_str().unwrap().to_string()
-        + MAIN_SEPARATOR_STR
-        + "AppData"
-        + MAIN_SEPARATOR_STR
-        + "Roaming"
-        + MAIN_SEPARATOR_STR
-        + "app.nexus.desktop"
-        + MAIN_SEPARATOR_STR
-        + "nexus.sqlite"
+
+    if OS == "windows" {
+        home_dir.to_str().unwrap().to_string()
+            + MAIN_SEPARATOR_STR
+            + "AppData"
+            + MAIN_SEPARATOR_STR
+            + "Roaming"
+            + MAIN_SEPARATOR_STR
+            + "app.nexus.desktop"
+            + MAIN_SEPARATOR_STR
+            + "nexus.sqlite"
+    } else {
+        home_dir.to_str().unwrap().to_string()
+            + MAIN_SEPARATOR_STR
+            + "Nexus"
+            + MAIN_SEPARATOR_STR
+            + "nexus.sqlite"
+    }
 }

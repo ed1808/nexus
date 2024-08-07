@@ -4,38 +4,35 @@
     <p>You don't have tasks yet</p>
   </div>
 } @else {
-  <table
-    class="w-full bg-white dark:bg-shark-800 rounded shadow shadow-shark-800 dark:shadow-md dark:shadow-black overflow-y-auto"
-    cdk-table [dataSource]="dataSource">
-
-    <ng-container cdkColumnDef="title">
-      <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Title</th>
-      <td class="h-14 px-6 text-sm" cdk-cell *cdkCellDef="let row">{{ row.title }}</td>
-    </ng-container>
-
-    <ng-container cdkColumnDef="description">
-      <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Description</th>
-      <td class="h-14 px-6 text-sm" cdk-cell *cdkCellDef="let row">{{ row.description }}
-      </td>
-    </ng-container>
-
-    <ng-container cdkColumnDef="priority">
-      <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Priority</th>
-      <td class="h-14 px-6 text-sm capitalize" cdk-cell *cdkCellDef="let row">{{ row.priority }}</td>
-    </ng-container>
-
-    <ng-container cdkColumnDef="status">
-      <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Status</th>
-      <td class="h-14 px-6 text-sm capitalize" cdk-cell *cdkCellDef="let row">{{ row.status }}</td>
-    </ng-container>
-
-    <ng-container cdkColumnDef="createdAt">
-      <th class="h-14 px-6 pt-2 border-b border-b-gray-400" cdk-header-cell *cdkHeaderCellDef>Created at</th>
-      <td class="h-14 px-6 text-sm" cdk-cell *cdkCellDef="let row">{{ row.created_at | date: "YYYY-MM-dd" }}
-      </td>
-    </ng-container>
-
-    <tr cdk-header-row *cdkHeaderRowDef="cols"></tr>
-    <tr cdk-row *cdkRowDef="let row; columns: cols;"></tr>
-  </table>
+  <div class="h-[calc(100%-32px)] overflow-y-auto rounded shadow shadow-shark-800 dark:shadow-md dark:shadow-black">
+    <table class="h-full border-spacing-0 w-full text-sm text-left">
+      <thead class="text-xs uppercase dark:text-gray-200">
+        <tr class="border-b border-b-gray-500 dark:border-b-shark-900">
+          <th scope="col" class="sticky bg-white dark:bg-shark-800 top-0 z-[9] px-6 py-3 text-center">Title</th>
+          <th scope="col" class="sticky bg-white dark:bg-shark-800 top-0 z-[9] px-6 py-3 text-center">Description</th>
+          <th scope="col" class="sticky bg-white dark:bg-shark-800 top-0 z-[9] px-6 py-3 text-center">Priority</th>
+          <th scope="col" class="sticky bg-white dark:bg-shark-800 top-0 z-[9] px-6 py-3 text-center">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (task of tasks; track task.id; let last = $last) {
+          @if (last) {
+            <tr class="bg-gray-200 dark:bg-shark-950">
+              <td class="px-6 py-4">{{ task.title }}</td>
+              <td class="px-6 py-4">{{ task.description }}</td>
+              <td class="px-6 py-4 capitalize">{{ task.priority }}</td>
+              <td class="px-6 py-4 capitalize">{{ task.status }}</td>
+            </tr>
+          } @else {
+            <tr class="bg-gray-200 border-b border-b-gray-500 dark:border-b-shark-900 dark:bg-shark-950">
+              <td class="px-6 py-4">{{ task.title }}</td>
+              <td class="px-6 py-4">{{ task.description }}</td>
+              <td class="px-6 py-4 capitalize">{{ task.priority }}</td>
+              <td class="px-6 py-4 capitalize">{{ task.status }}</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
 }

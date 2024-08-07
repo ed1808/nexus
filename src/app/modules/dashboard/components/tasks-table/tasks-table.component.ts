@@ -1,20 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { TasksService } from '../../../../services/tasks.service';
-import { DataSourceTask } from './data-source';
-import { CdkTableModule } from '@angular/cdk/table';
 import { DatePipe } from '@angular/common';
+import { Task } from '../../../../models/task.model';
 
 @Component({
   selector: 'app-tasks-table',
   standalone: true,
-  imports: [CdkTableModule, DatePipe],
+  imports: [DatePipe],
   templateUrl: './tasks-table.component.html'
 })
 export class TasksTableComponent {
   private tasksService = inject(TasksService);
 
-  dataSource = new DataSourceTask();
-  cols: string[] = ['title', 'description', 'priority', 'status', 'createdAt'];
+  tasks: Task[] = [];
   hasTasks: boolean = false;
 
   ngOnInit(): void {
@@ -25,7 +23,7 @@ export class TasksTableComponent {
     this.tasksService.getTasks()
       .then(result => {
         this.hasTasks = result.length > 0;
-        this.dataSource.init(result);
+        this.tasks = result;
       })
       .catch(err => console.error(err));
   }

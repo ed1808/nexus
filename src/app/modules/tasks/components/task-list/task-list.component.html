@@ -1,41 +1,43 @@
 <div
-  [ngClass]="{ 'h-full': list.tasks!.length! > 0 }" class="overflow-y-auto p-2 w-72 rounded shrink-0 bg-gray-200 shadow shadow-shark-800 dark:shadow-md dark:shadow-black dark:bg-shark-950">
-  <div class="py-3 flex justify-between">
-    <h2 (click)="showUpdateListNameForm()" #taskListName class="text-sm font-bold w-3/4">{{ list.title }}</h2>
-    <form #editTaskListName (ngSubmit)="handleUpdateTaskListName()" [formGroup]="updateTaskListNameFormGroup" class="hidden">
-      <input type="text" class="rounded bg-gray-300 border-2 font-bold text-sm resize-none" name="listName" id="listName" spellcheck="false" formControlName="updateTaskListName">
-    </form>
-    <button type="button"
-      class="hover:bg-gray-300 dark:hover:bg-shark-800 rounded-md cursor-pointer transition-colors ease-linear"
-      (click)="isOpen = !isOpen"
-      cdkOverlayOrigin
-      #taskListOverlay="cdkOverlayOrigin">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
-        height="24" color="currentColor" fill="none">
-        <path d="M11.9959 12H12.0049" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M17.9998 12H18.0088" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M5.99981 12H6.00879" stroke="currentColor" stroke-width="2.5"
-          stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-  </div>
-  <div id="list_{{ list.id }}" cdkDropList class="p-1 min-h-5 max-h-[calc(100%-104px)] overflow-y-auto flex flex-col gap-2 shrink-0" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list.tasks!">
-    @for (task of list.tasks; track task.id) {
-      <app-task 
-      [taskId]="task.id!" 
-      [taskTitle]="task.title!" 
-      [priority]="task.priority === '' ? 'none' : task.priority!"
-      (click)="showTaskDetail(task)" 
-      (deleteTaskEvent)="handleDeleteTaskEvent($event)" 
-      cdkDrag
-      ></app-task>
-    } @empty {
-      <div class="h-full">
-        <p class="text-sm text-center text-gray-400 dark:text-shark-700 pointer-events-none">You don't have any task in this list</p>
-      </div>
-    }
+  [ngClass]="{ 'h-full flex flex-col justify-between': list.tasks!.length > 4}" class="max-h-full overflow-y-auto p-2 w-72 rounded shrink-0 bg-gray-200 shadow shadow-shark-800 dark:shadow-md dark:shadow-black dark:bg-shark-950">
+  <div class="min-h-[86%] max-h-[100dvh] h-full">
+    <div class="py-3 flex justify-between">
+      <h2 (click)="showUpdateListNameForm()" #taskListName class="text-sm font-bold w-3/4">{{ list.title }}</h2>
+      <form #editTaskListName (ngSubmit)="handleUpdateTaskListName()" [formGroup]="updateTaskListNameFormGroup" class="hidden">
+        <input type="text" class="rounded bg-gray-300 border-2 font-bold text-sm resize-none" name="listName" id="listName" spellcheck="false" formControlName="updateTaskListName">
+      </form>
+      <button type="button"
+        class="hover:bg-gray-300 dark:hover:bg-shark-800 rounded-md cursor-pointer transition-colors ease-linear"
+        (click)="isOpen = !isOpen"
+        cdkOverlayOrigin
+        #taskListOverlay="cdkOverlayOrigin">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+          height="24" color="currentColor" fill="none">
+          <path d="M11.9959 12H12.0049" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M17.9998 12H18.0088" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M5.99981 12H6.00879" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+    <div id="list_{{ list.id }}" cdkDropList class="p-1 min-h-5 max-h-[calc(100%-50px)] overflow-y-auto flex flex-col gap-2 shrink-0" cdkDropList (cdkDropListDropped)="drop($event)" [cdkDropListData]="list.tasks!">
+      @for (task of list.tasks; track task.id) {
+        <app-task 
+        [taskId]="task.id!" 
+        [taskTitle]="task.title!" 
+        [priority]="task.priority === '' ? 'none' : task.priority!"
+        (click)="showTaskDetail(task)" 
+        (deleteTaskEvent)="handleDeleteTaskEvent($event)" 
+        cdkDrag
+        ></app-task>
+      } @empty {
+        <div class="h-full">
+          <p class="text-sm text-center text-gray-400 dark:text-shark-700 pointer-events-none">You don't have any task in this list</p>
+        </div>
+      }
+    </div>
   </div>
   <div class="pt-2 px-1 pb-1 w-full flex flex-col gap-2 text-sm items-center">
     <form (ngSubmit)="handleCreateNewTask()" [formGroup]="newTaskFormGroup" #newTaskForm class="hidden flex-col gap-2 w-full">
