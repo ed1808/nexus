@@ -19,7 +19,7 @@
   </div>
   <div class="p-2 h-[calc(100%-49px)]">
     <div class="relative min-[883px]:static h-full min-[883px]:flex min-[883px]:gap-3">
-      <app-tasks-table></app-tasks-table>
+      <app-tasks-table class="w-8/12"></app-tasks-table>
       <div class="absolute top-0 -right-0 z-10 min-[883px]:static min-w-[260px] w-4/12 py-3 pl-3 pr-2 h-full flex flex-col gap-3 rounded-md shadow shadow-shark-800 dark:shadow-md dark:shadow-black min-[883px]:shadow-none min-[883px]:dark:shadow-none bg-gray-200 dark:bg-shark-950 min-[883px]:bg-transparent min-[883px]:dark:bg-transparent" [@openClose]="showDashboardInfo() ? 'open' : 'closed'">
         <div class="absolute -left-6 h-[calc(100%-24px)] flex flex-col justify-center rounded-l-md bg-gray-300 dark:bg-shark-800 cursor-pointer dark:hover:bg-shark-700 hover:bg-gray-400 min-[883px]:hidden transition-colors ease-linear" (click)="toggleDashboardInfo()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="currentColor" fill="none" [@rotateArrow]="showDashboardInfo() ? 'hide' : 'show'">
